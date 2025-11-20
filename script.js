@@ -33,7 +33,7 @@ function addEntry() {
     id="${entryDropdown.value}-${entryNumber}-calories"
     placeholder="Calories"
   />`;
-  targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
+  targetInputContainer.insertAdjacentHTML('beforeend', HTMLString); // permet de conserver les données en input contrairement à innerHTML qui reload le DOM
 }
 
 // fonction de calcul et affichage des calories 1/2
