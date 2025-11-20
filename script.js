@@ -72,7 +72,7 @@ function calculateCalories(e) {
   output.classList.remove('hide');
 }
 
-// fonction de calcul et affichage des calories 2/2
+// fonction de calcul 'interne' des calories par type de repas 2/2
 function getCaloriesFromInputs(list) {
   let calories = 0;
 
