@@ -7,16 +7,19 @@ const clearButton = document.getElementById('clear');
 const output = document.getElementById('output');
 let isError = false;
 
+// filtre sur les calories pour éviter '+' '-' et ' '
 function cleanInputString(str) {
   const regex = /[+-\s]/g;
   return str.replace(regex, '');
 }
 
+// filtre sur les entrées avec la notation 'exposant'
 function isInvalidInput(str) {
   const regex = /\d+e\d+/i;
   return str.match(regex);
 }
 
+// fonction d'ajout des entrées pour chaque fieldset
 function addEntry() {
   const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
   const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length + 1;
@@ -33,6 +36,7 @@ function addEntry() {
   targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 }
 
+// fonction de calcul et affichage des calories 1/2
 function calculateCalories(e) {
   e.preventDefault();
   isError = false;
@@ -68,6 +72,7 @@ function calculateCalories(e) {
   output.classList.remove('hide');
 }
 
+// fonction de calcul et affichage des calories 2/2
 function getCaloriesFromInputs(list) {
   let calories = 0;
 
@@ -85,6 +90,8 @@ function getCaloriesFromInputs(list) {
   return calories;
 }
 
+
+// fonction de réinitialisation du formulaire
 function clearForm() {
   const inputContainers = Array.from(document.querySelectorAll('.input-container'));
 
@@ -97,6 +104,7 @@ function clearForm() {
   output.classList.add('hide');
 }
 
+// Mise en place des EventListener
 addEntryButton.addEventListener("click", addEntry);
 calorieCounter.addEventListener("submit", calculateCalories);
 clearButton.addEventListener('click', clearForm);
